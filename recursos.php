@@ -74,6 +74,7 @@
               <?php
                 $sql = "SELECT * FROM recursos";
                 $result = $conn->query($sql);
+                $count = 0;
                 if ($result->num_rows > 0) {
                   // output data of each row
                   while($row = $result->fetch_assoc()) {
@@ -82,8 +83,20 @@
                       <tr>
                         <th scope=\"row\">". $row["nome"]. "</th>
                         <td>". $row["quantidade"]. "</td>
-                        <td><button type=\"button\" class=\"btn btn-primary\">Atualizar</button></td>
-                      </tr>";
+                        <td><button type=\"button\" class=\"btn btn-primary\" id=\"atlzRecurso".$count."\">Atualizar</button></td>
+                      </tr>
+                      <script>
+                        document.getElementById('atlzRecurso".$count."').onclick = function() {
+                          var cname = \"idREcurso\";
+                          var cvalue = ". $row["recursoId"]. ";
+                          var d = new Date();
+                          d.setTime(d.getTime() + (10*60*1000));
+                          var expires = \"expires=\"+ d.toUTCString();
+                          document.cookie = cname + \"=\" + cvalue + \";\" + expires + \";path=/\";;
+                          window.open(\"./editRecurso.php\",\"_self\");
+                        };
+                      </script>";
+                      $count = $count+1;
                     
                   }
                 } else {

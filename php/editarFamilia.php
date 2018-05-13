@@ -16,7 +16,7 @@
 
         $sql = "UPDATE familias
         SET representante = '".$representante."', numeroMembros= '".$nmembros."', endereco= '".$endereco."', telefone= '".$telefone."', estado= '".$estado."', cestasRecebidas= '".$cestas."', membroIgreja= '".$membro."', prioridade= '".$prioridade."'
-        WHERE familiaID = " .$_COOKIE["idFAmilia"]. ";";
+        WHERE familiaId = " .$_COOKIE["idFAmilia"]. ";";
         if($conn->query($sql)){
             echo"<script language='javascript' type='text/javascript'>
             alert('Família atualizada com sucesso!');

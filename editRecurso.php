@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<?php
+  require_once "./php/conectDB.php"
+?>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ASA Itabira</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">ASA Itabira</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="./familias.php">Famílias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="./doadores.php">Doadores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="./recursos.php">Recursos</a>
+            </li>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="cadform">
+        <h2>Atualizar Recurso</h2>
+        <br>
+        <form method="POST" action="./php/editarRecurso.php">
+
+            <?php
+                if(!isset($_COOKIE["idREcurso"])) {
+                    echo "Dados expirados, tente novamente!";
+                } else {
+                    $sql = "SELECT * FROM recursos AS RE WHERE RE.recursoID=" .$_COOKIE["idREcurso"]. "";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                        
+                        echo "
+                        <div class=\"form-row\">
+                            <div class=\"form-group col-md-6\">
+                            <label for=\"inputItem\">Item</label>
+                            <input type=\"text\" class=\"form-control\" name=\"inputItem\" id=\"inputItem\" placeholder=\"Nome do item\" value=\"". $row["nome"]."\">
+                            </div>
+                            <div class=\"form-group col-md-6\">
+                            <label for=\"inputQuantidade\">Quantidade</label>
+                            <input type=\"text\" class=\"form-control\" name=\"inputQuantidade\" id=\"inputQuantidade\" placeholder=\"Quantidade\" value=\"". $row["quantidade"]."\">
+                            </div>
+                        </div>
+                        <button type=\"submit\" class=\"btn btn-primary\" name=\"atualizar\" id=\"atualizar\" >Atualizar</button>
+                        <button type=\"button\" class=\"btn btn-danger\">Deletar recurso</button>";
+                        
+                        }
+                    } else {
+                        echo "<tr><td>Nenhuma família cadastrada!</td></tr>";
+                    }
+                    $conn->close();
+                }
+            ?>
+
+            
+        </form>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="js/scrolling-nav.js"></script>
+    <script src="js/login.js"></script>
+
+  </body>
+
+</html>

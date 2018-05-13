@@ -48,7 +48,7 @@
     </nav>
 
     <div class="cadform">
-        <h2>Cadastro de Família</h2>
+        <h2>Atualizar Família</h2>
         <br>
         <form method="POST" action="./php/editarFamilia.php">
 
@@ -148,7 +148,8 @@
                         </div>
                         <div class=\"form-group\">
                         </div>
-                        <button type=\"submit\" class=\"btn btn-primary\" name=\"atualizar\" id=\"atualizar\" >Atualizar</button>";
+                        <button type=\"submit\" class=\"btn btn-primary\" name=\"atualizar\" id=\"atualizar\" >Atualizar</button>
+                        <button type=\"button\" class=\"btn btn-danger\">Deletar família</button>";
                         
                         }
                     } else {
@@ -158,8 +159,6 @@
                 }
                 
             ?>
-
-            
         </form>
 
     </div>

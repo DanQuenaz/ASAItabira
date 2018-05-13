@@ -76,6 +76,7 @@
               <?php
                 $sql = "SELECT * FROM doadores";
                 $result = $conn->query($sql);
+                $count = 0;
                 if ($result->num_rows > 0) {
                   // output data of each row
                   while($row = $result->fetch_assoc()) {
@@ -87,8 +88,20 @@
                         <td>". $row["telefone"]. "</td>
                         <td>". $row["intervaloDoacoes"]. "</td>
                         <td>". $row["ultimaDoacao"]. "</td>
-                        <td><button type=\"button\" class=\"btn btn-primary\">Atualizar</button></td>
-                      </tr>";
+                        <td><button type=\"button\" class=\"btn btn-primary\" id=\"atlzDoador".$count."\">Atualizar</button></td>
+                      </tr>
+                      <script>
+                        document.getElementById('atlzDoador".$count."').onclick = function() {
+                          var cname = \"idDOador\";
+                          var cvalue = ". $row["doadorId"]. ";
+                          var d = new Date();
+                          d.setTime(d.getTime() + (10*60*1000));
+                          var expires = \"expires=\"+ d.toUTCString();
+                          document.cookie = cname + \"=\" + cvalue + \";\" + expires + \";path=/\";;
+                          window.open(\"./editDoador.php\",\"_self\");
+                        };
+                      </script>";
+                      $count = $count+1;;
                     
                   }
                 } else {
