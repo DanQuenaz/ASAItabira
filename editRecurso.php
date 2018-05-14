@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <?php
-  require_once "./php/conectDB.php"
+  require_once "./php/conectDB.php";
+
+  if(!isset($_COOKIE["idLOgado"])) {
+    echo "<script language='javascript' type='text/javascript'>
+      window.location.href='../index.php';
+      alert('Você precisa estar logado para acessar essa página!');
+  </script>";
+  } else {
+
+  }
 ?>
 <html lang="en">
 
@@ -41,6 +50,15 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="./recursos.php">Recursos</a>
             </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-danger" id="quitQuit">Sair</button>
+                <script>
+                    document.getElementById('quitQuit').onclick = function() {
+                    document.cookie = 'idLOgado' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                    window.open("./index.php","_self");
+                    };
+                </script>
+            </li>
             </li>
           </ul>
         </div>
@@ -67,11 +85,11 @@
                         <div class=\"form-row\">
                             <div class=\"form-group col-md-6\">
                             <label for=\"inputItem\">Item</label>
-                            <input type=\"text\" class=\"form-control\" name=\"inputItem\" id=\"inputItem\" placeholder=\"Nome do item\" value=\"". $row["nome"]."\">
+                            <input type=\"text\" class=\"form-control\" name=\"inputItem\" id=\"inputItem\" placeholder=\"Nome do item\" value=\"". $row["nome"]."\" required>
                             </div>
                             <div class=\"form-group col-md-6\">
                             <label for=\"inputQuantidade\">Quantidade</label>
-                            <input type=\"text\" class=\"form-control\" name=\"inputQuantidade\" id=\"inputQuantidade\" placeholder=\"Quantidade\" value=\"". $row["quantidade"]."\">
+                            <input type=\"text\" class=\"form-control\" name=\"inputQuantidade\" id=\"inputQuantidade\" placeholder=\"Quantidade\" value=\"". $row["quantidade"]."\" required>
                             </div>
                         </div>
                         <button type=\"submit\" class=\"btn btn-primary\" name=\"atualizar\" id=\"atualizar\" >Atualizar</button>

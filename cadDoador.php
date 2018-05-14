@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <?php
-  require_once "./php/conectDB.php"
+  require_once "./php/conectDB.php";
+
+  if(!isset($_COOKIE["idLOgado"])) {
+    echo "<script language='javascript' type='text/javascript'>
+      window.location.href='../index.php';
+      alert('Você precisa estar logado para acessar essa página!');
+  </script>";
+  } else {
+
+  }
 ?>
 <html lang="en">
 
@@ -41,6 +50,15 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="./recursos.php">Recursos</a>
             </li>
+            <li class="nav-item">
+                <button type="button" class="btn btn-danger" id="quitQuit">Sair</button>
+                <script>
+                    document.getElementById('quitQuit').onclick = function() {
+                    document.cookie = 'idLOgado' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                    window.open("./index.php","_self");
+                    };
+                </script>
+            </li>
             </li>
           </ul>
         </div>
@@ -54,16 +72,16 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                 <label for="inputNome">Nome</label>
-                <input type="text" class="form-control" name="inputNome" id="inputNome" placeholder="Nome">
+                <input type="text" class="form-control" name="inputNome" id="inputNome" placeholder="Nome" required autofocus>
                 </div>
                 <div class="form-group col-md-6">
                 <label for="inputTelefone">Telefone</label>
-                <input type="text" class="form-control" name="inputTelefone" id="inputTelefone" placeholder="Telefone">
+                <input type="text" class="form-control" name="inputTelefone" id="inputTelefone" placeholder="Telefone" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputEndereco">Endereco</label>
-                <input type="text" class="form-control" name="inputEndereco" id="inputEndereco" placeholder="1234 Main St">
+                <input type="text" class="form-control" name="inputEndereco" id="inputEndereco" placeholder="1234 Main St" required>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -76,7 +94,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputUltimaDoacao">Ultima doação</label>
-                    <input type="text" class="form-control" name="inputUltimaDoacao" id="inputUltimaDoacao" placeholder="Data da ultima doação">
+                    <input type="text" class="form-control" name="inputUltimaDoacao" id="inputUltimaDoacao" placeholder="Data da ultima doação" required>
                 </div>
             </div>
             <div class="form-group">

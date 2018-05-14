@@ -1,4 +1,9 @@
 <?php
+    // $servername = "localhost";
+    // $username = "id5755472_root";
+    // $password = "iasd12345";
+    // $dbname = "id5755472_asaitabira";
+
     $servername = "localhost";
     $username = "root";
     $password = "";

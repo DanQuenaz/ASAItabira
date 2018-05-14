@@ -31,13 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="./familias.php">Famílias</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="./doadores.php">Doadores</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="./recursos.php">Recursos</a>
+              <a class="nav-link js-scroll-trigger" href="#">Sobre</a>
             </li>
           </ul>
         </div>
@@ -53,34 +47,24 @@
 
     <div class="container">
 
-      <form class="form-signin">
+      <form class="form-signin" method="POST" action="./php/login.php">
         <h2 class="form-signin-heading">Login</h2>
         <label for="inputEmail" class="sr-only">Nome</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Nome" required autofocus>
+        <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Nome" required autofocus>
         <label for="inputPassword" class="sr-only">Senha</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+        <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Senha" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Mantenha-me conectado
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"  name="inputLogin" id="inputLogin" >Entrar</button>
       </form>
 
     </div> <!-- /container -->
     
 
-   
-
-   
-
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+  
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

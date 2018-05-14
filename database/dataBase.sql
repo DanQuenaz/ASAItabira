@@ -4,7 +4,7 @@
 
 
 -- Table: Famílias
-CREATE TABLE Familias (
+CREATE TABLE familias (
     familiaId int NOT NULL AUTO_INCREMENT,
     representante varchar(512) NOT NULL,
     numeroMembros int NOT NULL,
@@ -12,14 +12,14 @@ CREATE TABLE Familias (
     telefone varchar(256) NOT NULL,
     estado varchar(32) NOT NULL,
     cestasRecebidas int NOT NULL,
-    membroIgreja varchar(16), NOT NULL,
+    membroIgreja varchar(16) NOT NULL,
     prioridade int NOT NULL,
 
     PRIMARY KEY (familiaId)
 );
 
 -- Table: Doadores
-CREATE TABLE Doadores (
+CREATE TABLE doadores (
     doadorId int NOT NULL AUTO_INCREMENT,
     nome varchar(256) NOT NULL,
     endereco varchar(512) NOT NULL,
@@ -30,30 +30,27 @@ CREATE TABLE Doadores (
     PRIMARY KEY (doadorId)
 );
 
--- Table: Usuarios
-CREATE TABLE Usuarios (
-    usuarioId int NOT NULL AUTO_INCREMENT,
-    primeiroNome varchar(64) NOT NULL,
-    sobreNome varchar(64) NOT NULL,
-    cpf char(11) NOT NULL,
-    estado varchar(32) NOT NULL,
-    cidade varchar(64) NOT NULL,
-    endereco varchar(1000) NOT NULL,
-    bairro varchar(64) NOT NULL,
-    email varchar(64) NOT NULL,
-    senha varchar(64) NOT NULL,
-    nivel int NOT NULL,
-
-    PRIMARY KEY (usuarioId)
-);
-
 -- Table: Recursos
-CREATE TABLE Recursos (
+CREATE TABLE recursos (
     recursoId int NOT NULL AUTO_INCREMENT,
     nome varchar(256) NOT NULL,
     quantidade varchar(256) NOT NULL,
 
     PRIMARY KEY (recursoId)
+);
+
+-- Table: Usuarios
+CREATE TABLE usuarios (
+    usuarioId int NOT NULL AUTO_INCREMENT,
+    nome varchar(64) NOT NULL,
+    nick varchar(64) NOT NULL,
+    cpf char(11) NOT NULL,
+    endereco varchar(256) NOT NULL,
+    email varchar(64) NOT NULL,
+    senha varchar(64) NOT NULL,
+    nivel int NOT NULL,
+
+    PRIMARY KEY (usuarioId)
 );
 
 
